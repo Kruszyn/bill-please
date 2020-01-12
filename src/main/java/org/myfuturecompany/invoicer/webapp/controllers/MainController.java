@@ -20,4 +20,9 @@ public class MainController {
     public String repo(){
         return "repo";
     }
+
+    @GetMapping(value = {"/template"})
+    public String template(){
+        return "template";
+    }
 }
