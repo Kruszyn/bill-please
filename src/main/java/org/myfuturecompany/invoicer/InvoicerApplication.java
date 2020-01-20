@@ -7,7 +7,6 @@ import org.springframework.context.event.EventListener;
 @SpringBootApplication
 public class InvoicerApplication {
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(InvoicerApplication.class, args);
 	}
