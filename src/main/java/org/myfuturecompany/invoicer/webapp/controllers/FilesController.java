@@ -1,7 +1,7 @@
 package org.myfuturecompany.invoicer.webapp.controllers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.myfuturecompany.invoicer.storage.DocumentStorage;
+import org.myfuturecompany.invoicer.storage.document.DocumentStorage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

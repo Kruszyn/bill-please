@@ -1,4 +1,4 @@
-package org.myfuturecompany.invoicer.storage;
+package org.myfuturecompany.invoicer.storage.file;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,6 +8,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface FileStorage {
+    UUID saveFile(File file);
     void saveFiles(List<MultipartFile> files);
+
     Optional<File> getFile(UUID fileUUID);
 }
