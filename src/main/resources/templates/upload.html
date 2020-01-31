@@ -35,24 +35,24 @@
 </head>
 
 <body class="">
-<div class="wrapper">
-    <div th:replace="layout :: side-nav"></div>
-    <div class="main-panel">
-        <nav th:replace="layout :: top-nav"></nav>
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-info">
-                                <h4 class="card-title">Upload new files</h4>
-                                <p class="card-category">Or check <a th:href="@{upload}"> upload page </a> for more possibilites  </p>
-                            </div>
-                            <div class="card-body table-responsive">
-                                <form name="file-form" method="POST" action="files/upload">
-                                    <input type="file" id="files" name="files" />
-                                    <button class="btn btn-info" type="submit">Upload</button>
-                                </form>
+    <div class="wrapper">
+        <div th:replace="layout :: side-nav"></div>
+        <div class="main-panel">
+            <nav th:replace="layout :: top-nav"></nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-info">
+                                    <h4 class="card-title">Upload new files</h4>
+                                </div>
+                                <div class="card-body table-responsive">
+                                    <form name="file-form" method="POST">
+                                        <input id="files" type="file" name="files" multiple/>
+                                        <button id="upload-submit" class="btn btn-info">Upload</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -60,22 +60,24 @@
             </div>
         </div>
     </div>
-</div>
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-<!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-<script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
-<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
-
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+    <!-- Custom js file -->
+    <script src="../custom/upload.js">
+    </script>
 </body>
+
 </html>
