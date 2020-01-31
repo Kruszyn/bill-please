@@ -1,20 +1,14 @@
 package org.myfuturecompany.invoicer.storage.document.model;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
-import java.util.UUID;
+import org.springframework.data.annotation.Id;
 
 @Data
+@org.springframework.data.mongodb.core.mapping.Document
 public class Document {
-    private final UUID documentUUID;
+    @Id
+    private String documentID;
     private String title;
-    private UUID mainFileUUID;
-
-    public Document(){
-        this.documentUUID = UUID.randomUUID();
-        this.title = this.documentUUID.toString();
-    }
-
+    private String mainFileID;
 
 }

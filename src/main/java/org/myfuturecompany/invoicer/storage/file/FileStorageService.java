@@ -14,13 +14,15 @@ import java.util.UUID;
 public class FileStorageService implements FileStorage{
 
     @Override
-    public UUID saveFile(File file) {
+    public UUID saveFile(MultipartFile file) {
+        log.debug("Saving file " + file.getName());
         log.warn("Not implemented yet!");
         return null;
     }
 
     @Override
     public void saveFiles(List<MultipartFile> files) {
+        files.forEach(o -> log.debug(o.getName()));
         log.warn("Not implemented yet!");
     }
 

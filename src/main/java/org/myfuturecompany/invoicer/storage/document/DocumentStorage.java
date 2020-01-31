@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface DocumentStorage {
     //C
     void saveDocument(Document doc);
-    Document createNewDocument(File file);
+    Document createNewDocument(MultipartFile file);
     List<Document> createNewDocuments(List<MultipartFile> files);
     //R
     Optional<Document> getDocument(String param);
