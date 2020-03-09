@@ -1,0 +1,13 @@
+server:
+    port: 123
+spring:
+    thymeleaf:
+        cache: false
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+            database: invoicer_data
+            authentication-database: admin
+            username: user
+            password: pass
