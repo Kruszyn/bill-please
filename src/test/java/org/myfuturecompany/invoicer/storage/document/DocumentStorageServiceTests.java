@@ -12,6 +12,7 @@ import org.myfuturecompany.invoicer.storage.file.FileStorageService;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -30,7 +31,7 @@ public class DocumentStorageServiceTests extends JUnitSoftlyTest {
     private DocumentStorageService documentStorage;
 
     @Test
-    public void testMultipartFilesDocumentsCreation(){
+    public void testMultipartFilesDocumentsCreation() throws IOException {
         //given
         List<MultipartFile> list = new ArrayList<>();
         list.add(new MockMultipartFile("test", new byte[10]));

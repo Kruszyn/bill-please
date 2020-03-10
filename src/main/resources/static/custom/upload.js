@@ -22,6 +22,14 @@ $('#upload-submit').click(function(event) {
                     type: 'success'
                 });
             }
+        },
+        error: function(response){
+             $.notify({
+                title: "<strong>Error</strong> ",
+                message: response['message'],
+            }, {
+                type: 'danger'
+            });
         }
     });
 

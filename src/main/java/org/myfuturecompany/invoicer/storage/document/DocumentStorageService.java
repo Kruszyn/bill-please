@@ -8,6 +8,7 @@ import org.myfuturecompany.invoicer.storage.document.model.Document;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -24,17 +25,16 @@ public class DocumentStorageService implements DocumentStorage {
     }
 
     @Override
-    public Document createNewDocument(MultipartFile file) {
+    public Document createNewDocument(MultipartFile file) throws IOException {
         Document doc = new Document();
-        UUID fileUUID = fileStorage.saveFile(file);
-        doc.setMainFileID("file-id-123456");
+        String fileID = fileStorage.saveFile(file);
+        doc.setMainFileID(fileID);
         return documentRepository.save(doc);
     }
 
     @Override
-    public List<Document> createNewDocuments(List<MultipartFile> files) {
+    public List<Document> createNewDocuments(List<MultipartFile> files) throws IOException {
         List<Document> docs = new ArrayList<>();
-
         for (MultipartFile f : files) {
             docs.add(createNewDocument(f));
         }

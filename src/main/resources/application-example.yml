@@ -1,5 +1,8 @@
 server:
     port: 123
+    error:
+      include-exception: false
+      include-stacktrace: never
 spring:
     thymeleaf:
         cache: false
