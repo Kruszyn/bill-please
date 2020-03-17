@@ -3,7 +3,7 @@
 ### Helpful links
 
 ### Backend
-* [Spring boot + AWS S3](https://medium.com/oril/uploading-files-to-aws-s3-bucket-using-spring-boot-483fcb6f8646)
+* [AWS S3 java sdk](https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/aws-sdk-java-dg-v2.pdf)
 
 ### Fronted template
 * [Notifications](http://bootstrap-notify.remabledesigns.com/)
