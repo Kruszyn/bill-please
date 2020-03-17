@@ -8,6 +8,8 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -18,7 +20,7 @@ public class DocumentStorageServiceTests extends JUnitSoftlyTest {
             new DocumentStorageService(new TestFileStorage(), testRepo);
 
     @Test
-    public void testMultipartFilesDocumentsCreation() throws IOException {
+    public void testMultipartFileDocumentCreation() throws IOException {
         //given
         MultipartFile file = new MockMultipartFile("test.pdf", new byte[10]);
         //when
@@ -32,5 +34,18 @@ public class DocumentStorageServiceTests extends JUnitSoftlyTest {
         softly.assertThat(document.getMainFileType()).isEqualTo(FileType.PDF);
     }
 
+    @Test
+    public void testMultipartFileMultipleDocumentCreation() throws IOException {
+        //given
+        List<MultipartFile> files = new ArrayList<>();
+        MultipartFile file = new MockMultipartFile("test.pdf", new byte[10]);
+        files.add(file);
+        MultipartFile secondFile = new MockMultipartFile("test.abc", new byte[10]);
+        files.add(secondFile);
+        //when
+        List<Document> doc = documentStorage.createNewDocuments(files);
+        softly.assertThat(doc).isNotNull();
+        softly.assertThat(doc.size()).isEqualTo(2);
+    }
 
 }
