@@ -7,8 +7,8 @@ public enum FileType {
     static FileType getFileType(String name) {
         if(name == null || !name.contains(".")) return UNKNOWN;
 
-        int splitIndex = name.split(".").length;
-        String extension = name.split(".")[splitIndex-1];
+        int splitIndex = name.split("\\.").length;
+        String extension = name.split("\\.")[splitIndex-1];
 
         switch (extension.toLowerCase()) {
             case "pdf":

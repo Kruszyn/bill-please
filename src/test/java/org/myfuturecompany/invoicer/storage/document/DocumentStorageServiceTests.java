@@ -2,45 +2,34 @@ package org.myfuturecompany.invoicer.storage.document;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.myfuturecompany.invoicer.JUnitSoftlyTest;
-import org.myfuturecompany.invoicer.storage.file.FileStorageService;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DocumentStorageServiceTests extends JUnitSoftlyTest {
 
-    @Mock
-    private DocumentRepository documentRepository;
-    @Mock
-    private FileStorageService fileStorageService;
-    @InjectMocks()
-    private DocumentStorageService documentStorage;
+    private DocumentRepository testRepo = new TestDocumentRepository();
+    private DocumentStorageService documentStorage =
+            new DocumentStorageService(new TestFileStorage(), testRepo);
 
     @Test
     public void testMultipartFilesDocumentsCreation() throws IOException {
         //given
-        List<MultipartFile> list = new ArrayList<>();
-        list.add(new MockMultipartFile("test", new byte[10]));
-        list.add(new MockMultipartFile("test2", new byte[2]));
+        MultipartFile file = new MockMultipartFile("test.pdf", new byte[10]);
         //when
-        //when(fileStorageService.saveFile(any())).thenReturn(generatedFileUUID);
-        List<Document> doc = documentStorage.createNewDocuments(list);
-        //then
-        verify(fileStorageService, times(2)).saveFile(any());
+        Document doc = documentStorage.createNewDocument(file);
         softly.assertThat(doc).isNotNull();
-        softly.assertThat(doc.size()).isEqualTo(2);
 
+        Optional<Document> optionalDocument = testRepo.findByDocumentID(doc.getDocumentID());
+        softly.assertThat(optionalDocument).isNotNull();
+        softly.assertThat(optionalDocument.isPresent());
+        Document document = optionalDocument.get();
+        softly.assertThat(document.getMainFileType()).isEqualTo(FileType.PDF);
     }
 
 
