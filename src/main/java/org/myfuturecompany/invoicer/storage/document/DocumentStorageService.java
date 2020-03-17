@@ -2,9 +2,7 @@ package org.myfuturecompany.invoicer.storage.document;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.myfuturecompany.invoicer.storage.document.model.DocumentRepository;
 import org.myfuturecompany.invoicer.storage.file.FileStorage;
-import org.myfuturecompany.invoicer.storage.document.model.Document;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +27,7 @@ public class DocumentStorageService implements DocumentStorage {
         Document doc = new Document();
         String fileID = fileStorage.saveFile(file);
         doc.setMainFileID(fileID);
+        doc.setMainFileType(FileType.getFileType(file.getName()));
         return documentRepository.save(doc);
     }
 
@@ -42,9 +41,8 @@ public class DocumentStorageService implements DocumentStorage {
     }
 
     @Override
-    public Optional<Document> getDocument(String param) {
-        log.warn("Not implemented yet!");
-        return Optional.empty();
+    public Optional<Document> getDocument(String uuid) {
+        return documentRepository.findByDocumentID(uuid);
     }
 
     @Override

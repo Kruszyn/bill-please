@@ -6,8 +6,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.myfuturecompany.invoicer.JUnitSoftlyTest;
-import org.myfuturecompany.invoicer.storage.document.model.Document;
-import org.myfuturecompany.invoicer.storage.document.model.DocumentRepository;
 import org.myfuturecompany.invoicer.storage.file.FileStorageService;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;

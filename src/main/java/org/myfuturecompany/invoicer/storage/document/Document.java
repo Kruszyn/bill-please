@@ -1,4 +1,4 @@
-package org.myfuturecompany.invoicer.storage.document.model;
+package org.myfuturecompany.invoicer.storage.document;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -10,5 +10,5 @@ public class Document {
     private String documentID;
     private String title;
     private String mainFileID;
-
+    private FileType mainFileType;
 }
